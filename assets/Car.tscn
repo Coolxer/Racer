@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Car.gd" type="Script" id=1]
+[ext_resource path="res://assets/car.png" type="Texture" id=2]
+[ext_resource path="res://assets/wheel.png" type="Texture" id=3]
+
+[node name="Car" type="Node2D" index="0"]
+
+position = Vector2( 515, 538 )
+script = ExtResource( 1 )
+max_speed = 40
+acceleration = 8.2
+max_wheel_rotation_angle = 60
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+z_index = 1
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Wheels" type="Node2D" parent="." index="1"]
+
+[node name="UpperLeft" type="Node2D" parent="Wheels" index="0"]
+
+editor/display_folded = true
+position = Vector2( -23, -16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wheels/UpperLeft" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="UpperRight" type="Node2D" parent="Wheels" index="1"]
+
+editor/display_folded = true
+position = Vector2( 23, -16 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wheels/UpperRight" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="BottomLeft" type="Node2D" parent="Wheels" index="2"]
+
+editor/display_folded = true
+position = Vector2( -23, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wheels/BottomLeft" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="BottomRight" type="Node2D" parent="Wheels" index="3"]
+
+editor/display_folded = true
+position = Vector2( 23, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wheels/BottomRight" index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+
