@@ -8,8 +8,11 @@
 
 position = Vector2( 515, 538 )
 script = ExtResource( 1 )
-max_speed = 40
-acceleration = 8.2
+_sections_unfolded = [ "Transform" ]
+max_forward_speed = 40.0
+forward_acceleration = 8.2
+max_backward_speed = -10.0
+backward_acceleration = -10.0
 max_wheel_rotation_angle = 60
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
