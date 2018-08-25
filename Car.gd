@@ -1,13 +1,14 @@
 extends Node2D
 
-export var max_forward_speed = 40.0
-export var forward_acceleration = 8.2
-export var max_backward_speed = -10.0
-export var backward_acceleration = -4.0
+export var max_forward_speed = 20.0
+export var forward_acceleration = 4.2
+export var max_backward_speed = -5.0
+export var backward_brake_acceleration = -10.0
+export var backward_drive_acceleration = -4.2
 
-export var max_left_wheel_rotation_angle = 300
-export var max_right_wheel_rotation_angle = 60
-export var max_wheel_rotation_speed = 6
+export var max_left_wheel_rotation_angle = -40
+export var max_right_wheel_rotation_angle = 40
+export var wheel_rotation_speed = 100
 
 var current_speed = 0.0
 var current_rotation_angle = 0
@@ -47,8 +48,6 @@ func _process(delta):
     elif Input.is_action_just_released("ui_right"):
         turning_right = false
     
-    var current_speed = get_speed()
-    
     if gas_pedal_pressed:    
         if current_speed < max_forward_speed:
             current_speed += forward_acceleration * delta
@@ -57,27 +56,40 @@ func _process(delta):
                 current_speed = max_forward_speed
                 
     if brake_pedal_pressed:
-        if current_speed > max_backward_speed:
-            current_speed += backward_acceleration * delta
+        if current_speed > 0:
+            current_speed += backward_brake_acceleration * delta
+        elif current_speed > max_backward_speed:
+            current_speed += backward_drive_acceleration * delta
             
             if current_speed < max_backward_speed:
                 current_speed = max_backward_speed
                 
     if turning_left:
         if current_rotation_angle > max_left_wheel_rotation_angle:
-            current_rotation_angle -= max_wheel_rotation_speed * delta
-                
-    set_speed(current_speed)
+            current_rotation_angle -= wheel_rotation_speed * delta
+            
+            if current_rotation_angle < max_left_wheel_rotation_angle:
+                current_rotation_angle = max_left_wheel_rotation_angle
+            
+    if turning_right:
+        if current_rotation_angle < max_right_wheel_rotation_angle:
+            current_rotation_angle += wheel_rotation_speed * delta
+    
+            if current_rotation_angle > max_right_wheel_rotation_angle:
+                current_rotation_angle = max_right_wheel_rotation_angle
+    
+    velocity.y = -current_speed
                 
     position += velocity
     
     var left_wheel = $Wheels/UpperLeft
     var right_wheel = $Wheels/UpperRight
     
-    left_wheel.rotate(current_rotation_angle - left_wheel.transform.get_rotation())
-    right_wheel.rotate(current_rotation_angle - right_wheel.transform.get_rotation())
+    if current_rotation_angle != max_left_wheel_rotation_angle and current_rotation_angle != max_right_wheel_rotation_angle:
+        left_wheel.rotate(current_rotation_angle * PI/180.0 - left_wheel.transform.get_rotation())
+        right_wheel.rotate(current_rotation_angle * PI/180.0 - right_wheel.transform.get_rotation())
     
-    print(current_speed)
+    print(current_rotation_angle)
     
     pass
 
