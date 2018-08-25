@@ -12,8 +12,10 @@ _sections_unfolded = [ "Transform" ]
 max_forward_speed = 40.0
 forward_acceleration = 8.2
 max_backward_speed = -10.0
-backward_acceleration = -10.0
-max_wheel_rotation_angle = 60
+backward_acceleration = -4.0
+max_left_wheel_rotation_angle = 300
+max_right_wheel_rotation_angle = 60
+max_wheel_rotation_speed = 6
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

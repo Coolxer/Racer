@@ -3,11 +3,14 @@ extends Node2D
 export var max_forward_speed = 40.0
 export var forward_acceleration = 8.2
 export var max_backward_speed = -10.0
-export var backward_acceleration = -10.0
+export var backward_acceleration = -4.0
 
-export var max_wheel_rotation_angle = 60
+export var max_left_wheel_rotation_angle = 300
+export var max_right_wheel_rotation_angle = 60
+export var max_wheel_rotation_speed = 6
 
 var current_speed = 0.0
+var current_rotation_angle = 0
 
 var gas_pedal_pressed = false
 var brake_pedal_pressed = false
@@ -60,9 +63,19 @@ func _process(delta):
             if current_speed < max_backward_speed:
                 current_speed = max_backward_speed
                 
+    if turning_left:
+        if current_rotation_angle > max_left_wheel_rotation_angle:
+            current_rotation_angle -= max_wheel_rotation_speed * delta
+                
     set_speed(current_speed)
                 
     position += velocity
+    
+    var left_wheel = $Wheels/UpperLeft
+    var right_wheel = $Wheels/UpperRight
+    
+    left_wheel.rotate(current_rotation_angle - left_wheel.transform.get_rotation())
+    right_wheel.rotate(current_rotation_angle - right_wheel.transform.get_rotation())
     
     print(current_speed)
     
@@ -80,11 +93,11 @@ func set_speed(speed):
         velocity = Vector2(0, speed).rotated(deg2rad(rotation))
         
 #speed
+#acceleration
 #direction
 #gas
 #brake
 #turning
-#acceleration
 #car angle
 #wheel angle
 #adhesion of the surface
