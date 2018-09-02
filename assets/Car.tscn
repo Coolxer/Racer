@@ -9,14 +9,19 @@
 position = Vector2( 515, 538 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-max_forward_speed = 20.0
-forward_acceleration = 4.2
+gas_pedal_key = "up_1"
+brake_pedal_key = "down_1"
+turn_left_key = "left_1"
+turn_right_key = "right_1"
+max_forward_speed = 40.0
+forward_acceleration = 12.2
 max_backward_speed = -5.0
 backward_brake_acceleration = -10.0
 backward_drive_acceleration = -4.2
 max_left_wheel_rotation_angle = -40
 max_right_wheel_rotation_angle = 40
 wheel_rotation_speed = 100
+agility = 0.1
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

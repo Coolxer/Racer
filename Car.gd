@@ -1,17 +1,28 @@
 extends Node2D
 
-export var max_forward_speed = 20.0
-export var forward_acceleration = 4.2
+## Key names to control car movement
+export var gas_pedal_key = ""
+export var brake_pedal_key = ""
+export var turn_left_key = ""
+export var turn_right_key = ""
+
+## Car control factors
+export var max_forward_speed = 40.0
+export var forward_acceleration = 12.2
 export var max_backward_speed = -5.0
+# Acceleration during using brake (speed above 0)
 export var backward_brake_acceleration = -10.0
+# Normal acceleration during driving back
 export var backward_drive_acceleration = -4.2
 
 export var max_left_wheel_rotation_angle = -40
 export var max_right_wheel_rotation_angle = 40
 export var wheel_rotation_speed = 100
 
+export var agility = 0.1
+
 var current_speed = 0.0
-var current_rotation_angle = 0
+var current_rotation_angle = 0.0
 
 var gas_pedal_pressed = false
 var brake_pedal_pressed = false
@@ -19,34 +30,13 @@ var hand_brake_pulled = false
 var turning_left = false
 var turning_right = false
 
-#Vector of car movement factor
-var velocity = Vector2(0, 0)
-
 func _ready():
     # Called when the node is added to the scene for the first time.
     # Initialization here
     pass
 
 func _process(delta):
-    if Input.is_action_just_pressed("ui_up"):
-        gas_pedal_pressed = true
-    elif Input.is_action_just_released("ui_up"):
-        gas_pedal_pressed = false
-    
-    if Input.is_action_just_pressed("ui_down"):
-        brake_pedal_pressed = true
-    elif Input.is_action_just_released("ui_down"):
-        brake_pedal_pressed = false
-    
-    if Input.is_action_just_pressed("ui_left"):
-        turning_left = true
-    elif Input.is_action_just_released("ui_left"):
-        turning_left = false
-        
-    if Input.is_action_just_pressed("ui_right"):
-        turning_right = true
-    elif Input.is_action_just_released("ui_right"):
-        turning_right = false
+    _input()
     
     if gas_pedal_pressed:    
         if current_speed < max_forward_speed:
@@ -64,6 +54,8 @@ func _process(delta):
             if current_speed < max_backward_speed:
                 current_speed = max_backward_speed
                 
+    current_speed *= 0.99
+                
     if turning_left:
         if current_rotation_angle > max_left_wheel_rotation_angle:
             current_rotation_angle -= wheel_rotation_speed * delta
@@ -78,7 +70,22 @@ func _process(delta):
             if current_rotation_angle > max_right_wheel_rotation_angle:
                 current_rotation_angle = max_right_wheel_rotation_angle
     
+    #Vector of car movement factor
+    var velocity = Vector2(0, 0)
+    print(current_rotation_angle)
     velocity.y = -current_speed
+    velocity = velocity.rotated(rotation)
+       
+    if(current_speed != 0):         
+        var turn_piece = current_rotation_angle * agility
+        
+        current_rotation_angle -= turn_piece
+                       
+        if(turn_piece != 0):
+            if(current_speed > 0):
+                rotate(deg2rad(turn_piece))
+            else:
+                rotate(deg2rad(-turn_piece))
                 
     position += velocity
     
@@ -89,20 +96,40 @@ func _process(delta):
         left_wheel.rotate(current_rotation_angle * PI/180.0 - left_wheel.transform.get_rotation())
         right_wheel.rotate(current_rotation_angle * PI/180.0 - right_wheel.transform.get_rotation())
     
-    print(current_rotation_angle)
-    
     pass
+ 
+# Manage user input   
+func _input():
+    if Input.is_action_just_pressed(gas_pedal_key):
+        gas_pedal_pressed = true
+    elif Input.is_action_just_released(gas_pedal_key):
+        gas_pedal_pressed = false
+    
+    if Input.is_action_just_pressed(brake_pedal_key):
+        brake_pedal_pressed = true
+    elif Input.is_action_just_released(brake_pedal_key):
+        brake_pedal_pressed = false
+    
+    if Input.is_action_just_pressed(turn_left_key):
+        turning_left = true
+    elif Input.is_action_just_released(turn_left_key):
+        turning_left = false
+        
+    if Input.is_action_just_pressed(turn_right_key):
+        turning_right = true
+    elif Input.is_action_just_released(turn_right_key):
+        turning_right = false
 
-func get_speed():
-    return velocity.length()
+#func get_speed():
+#    return velocity.length()
     
-func set_speed(speed):
-    var current_speed = get_speed()
-    
-    if current_speed != 0:
-        velocity *= speed/current_speed
-    else:
-        velocity = Vector2(0, speed).rotated(deg2rad(rotation))
+#func set_speed(speed):
+#    var current_speed = get_speed()
+#
+#    if current_speed != 0:
+#        velocity *= speed/current_speed
+#    else:
+#        velocity = Vector2(0, speed).rotated(deg2rad(rotation))
         
 #speed
 #acceleration
