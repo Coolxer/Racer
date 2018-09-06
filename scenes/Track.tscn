@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/track1.png" type="Texture" id=1]
+
+[node name="Track" type="Node2D" index="0"]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 1, 4 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="InerPolygon" type="Polygon2D" parent="." index="1"]
+
+position = Vector2( 0, -85 )
+polygon = PoolVector2Array( -1, 291, 125, 320, 224, 373, 400, 408, 507, 412, 643, 369, 705, 224, 710, -23, 690, -140, 632, -266, 541, -317, 430, -317, 379, -287, 341, -211, 27, -10, -49, 15, -199, -28, -259, -84, -336, -195, -439, -234, -553, -241, -644, -198, -670, -104, -632, -8, -645, 108, -700, 212, -687, 317, -601, 362, -558, 405, -508, 415, -321, 347, -189, 326, -130, 299 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 1.0
+_sections_unfolded = [ "Invert" ]
+
+[node name="OuterPolygon" type="Polygon2D" parent="." index="2"]
+
+polygon = PoolVector2Array( -1, -210, 252, -327, 327, -446, 451, -510, 577, -507, 687, -461, 781, -337, 795, -207, 801, -108, 832, 143, 786, 359, 656, 453, 473, 462, 347, 442, 57, 341, -69, 352, -336, 436, -453, 491, -629, 480, -757, 418, -798, 200, -785, 143, -706, -42, -746, -126, -805, -291, -743, -395, -613, -446, -367, -423, -285, -362, -190, -238, -107, -196 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
+
