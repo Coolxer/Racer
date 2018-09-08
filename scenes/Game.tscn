@@ -7,6 +7,8 @@
 
 [node name="Car" parent="." index="0" instance=ExtResource( 1 )]
 
+position = Vector2( 513, 537 )
+
 [node name="Track" parent="." index="1" instance=ExtResource( 2 )]
 
 

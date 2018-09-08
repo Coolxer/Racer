@@ -72,7 +72,6 @@ func _process(delta):
     
     #Vector of car movement factor
     var velocity = Vector2(0, 0)
-    print(current_rotation_angle)
     velocity.y = -current_speed
     velocity = velocity.rotated(rotation)
        
@@ -119,17 +118,6 @@ func _input():
         turning_right = true
     elif Input.is_action_just_released(turn_right_key):
         turning_right = false
-
-#func get_speed():
-#    return velocity.length()
-    
-#func set_speed(speed):
-#    var current_speed = get_speed()
-#
-#    if current_speed != 0:
-#        velocity *= speed/current_speed
-#    else:
-#        velocity = Vector2(0, speed).rotated(deg2rad(rotation))
         
 #speed
 #acceleration
@@ -142,3 +130,14 @@ func _input():
 #adhesion of the surface
 #grip of the wheels
 #driving back
+
+func _on_Area2D_area_entered(area):
+    print("collision!")
+    
+    pass # replace with function body
+
+
+func _on_Area2D_area_exited(area):
+    print("end!")
+    
+    pass # replace with function body
