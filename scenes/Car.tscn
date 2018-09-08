@@ -27,6 +27,7 @@ max_left_wheel_rotation_angle = -40
 max_right_wheel_rotation_angle = 40
 wheel_rotation_speed = 100
 agility = 0.1
+default_ground_friction_factor = 0.9
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

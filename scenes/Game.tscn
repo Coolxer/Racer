@@ -8,6 +8,7 @@
 [node name="Car" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( 513, 537 )
+default_ground_friction_factor = 0.9
 
 [node name="Track" parent="." index="1" instance=ExtResource( 2 )]
 

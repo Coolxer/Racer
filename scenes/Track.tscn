@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/track1.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Area2D.gd" type="Script" id=2]
 
 [node name="Track" type="Node2D"]
 
@@ -12,6 +13,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Area2D" type="Area2D" parent="." index="1"]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -19,7 +21,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+script = ExtResource( 2 )
 _sections_unfolded = [ "Collision" ]
+friction_factor = 0.99
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 

@@ -21,8 +21,12 @@ export var wheel_rotation_speed = 100
 
 export var agility = 0.1
 
+export var default_ground_friction_factor = 0.9
+
 var current_speed = 0.0
 var current_rotation_angle = 0.0
+
+var ground_friction_factor = 0.9
 
 var gas_pedal_pressed = false
 var brake_pedal_pressed = false
@@ -54,7 +58,7 @@ func _process(delta):
             if current_speed < max_backward_speed:
                 current_speed = max_backward_speed
                 
-    current_speed *= 0.99
+    current_speed *= ground_friction_factor
                 
     if turning_left:
         if current_rotation_angle > max_left_wheel_rotation_angle:
@@ -132,12 +136,12 @@ func _input():
 #driving back
 
 func _on_Area2D_area_entered(area):
-    print("collision!")
+    ground_friction_factor = area.get_friction()
     
     pass # replace with function body
 
 
 func _on_Area2D_area_exited(area):
-    print("end!")
+    ground_friction_factor = default_ground_friction_factor
     
     pass # replace with function body
