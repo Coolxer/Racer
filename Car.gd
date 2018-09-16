@@ -136,7 +136,8 @@ func _input():
 #driving back
 
 func _on_Area2D_area_entered(area):
-    ground_friction_factor = area.get_friction()
+    if(area.is_in_group("grounds")):
+        ground_friction_factor = area.get_friction()
     
     pass # replace with function body
 

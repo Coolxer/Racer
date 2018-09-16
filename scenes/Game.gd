@@ -4,13 +4,9 @@ export var camera_speed = 300.0
 
 func _ready():
     $Camera2D.make_current()
-    
-    pass
 
 func _process(delta):
     _follow_players($Camera2D, delta)
-    
-    pass
 
 func _follow_players(camera, delta):
     print(camera.position)
@@ -30,3 +26,6 @@ func _get_center_players_position():
     
     if players.size() == 1:
         return Vector2(players[0].position.x, players[0].position.y)
+        
+func checkpoint_reached(area):
+    pass
