@@ -9,7 +9,6 @@ func _process(delta):
     _follow_players($Camera2D, delta)
 
 func _follow_players(camera, delta):
-    print(camera.position)
     var difference = _get_center_players_position() - camera.position
     var camera_offset = difference.normalized() * camera_speed * delta
     
@@ -28,4 +27,6 @@ func _get_center_players_position():
         return Vector2(players[0].position.x, players[0].position.y)
         
 func checkpoint_reached(area):
+    print(area)
+    
     pass

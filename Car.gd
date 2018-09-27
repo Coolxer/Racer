@@ -138,6 +138,9 @@ func _input():
 func _on_Area2D_area_entered(area):
     if(area.is_in_group("grounds")):
         ground_friction_factor = area.get_friction()
+   
+    if(area.is_in_group("checkpoints")):
+        print("CHECKPOINT")
     
     pass # replace with function body
 
