@@ -141,11 +141,6 @@ func _on_Area2D_area_entered(area):
    
     if(area.is_in_group("checkpoints")):
         print("CHECKPOINT")
-    
-    pass # replace with function body
-
 
 func _on_Area2D_area_exited(area):
     ground_friction_factor = default_ground_friction_factor
-    
-    pass # replace with function body
