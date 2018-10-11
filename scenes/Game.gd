@@ -19,7 +19,7 @@ func checkpoint_reached(area):
     print(area.get_owner())
     
 func _setup_gui():
-    add_child(GUI.instance())
+    $CanvasLayer.add_child(GUI.instance())
     
     for player in $Players.get_children():
-        $GUI.add_child(GUIPlayer.instance())
+        get_node("CanvasLayer/GUI/Players").add_child(GUIPlayer.instance())
