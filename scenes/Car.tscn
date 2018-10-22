@@ -9,11 +9,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 22, 44 )
 
-[node name="Car" type="Node2D"]
+[node name="Car" type="Node2D" index="0"]
 
 position = Vector2( 515, 538 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+nickname = "Player"
 gas_pedal_key = "up_1"
 brake_pedal_key = "down_1"
 turn_left_key = "left_1"

@@ -1,5 +1,7 @@
 extends Node2D
 
+export var nickname = "Player"
+
 ## Key names to control car movement
 export var gas_pedal_key = ""
 export var brake_pedal_key = ""
@@ -144,3 +146,6 @@ func _on_Area2D_area_entered(area):
 
 func _on_Area2D_area_exited(area):
     ground_friction_factor = default_ground_friction_factor
+    
+func get_nickname():
+    return nickname
