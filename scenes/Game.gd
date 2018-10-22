@@ -1,5 +1,8 @@
 extends Node2D
 
+#How many times players have to drive trough track 
+export var rounds = 2
+
 var track1 = preload("res://scenes/Track.tscn")
 var player1= preload("res://scenes/Car.tscn")
 
@@ -22,6 +25,10 @@ func _setup_gui():
         var player_interface = GUI_player.instance()
         
         player_interface.set_nickname(player.get_nickname())
+        player_interface.set_round(0, 2)
+        
+        var checkpoint_count = get_node("Track/Checkpoints").get_child_count()
+        player_interface.set_checkpoint(0, checkpoint_count)
         
         get_node("CanvasLayer/GUI/Players").add_child(player_interface)
         

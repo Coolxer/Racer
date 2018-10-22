@@ -143,6 +143,7 @@ func _on_Area2D_area_entered(area):
    
     if(area.is_in_group("checkpoints")):
         print("CHECKPOINT")
+        get_node("/root/Game").checkpoint_reached($Area2D)
 
 func _on_Area2D_area_exited(area):
     ground_friction_factor = default_ground_friction_factor
