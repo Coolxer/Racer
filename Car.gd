@@ -25,6 +25,12 @@ export var agility = 0.1
 
 export var default_ground_friction_factor = 0.9
 
+var current_checkpoint = 0
+var current_round = 0
+var finished = false
+
+var interface_ref = null
+
 var current_speed = 0.0
 var current_rotation_angle = 0.0
 
@@ -142,7 +148,6 @@ func _on_Area2D_area_entered(area):
         ground_friction_factor = area.get_friction()
    
     if(area.is_in_group("checkpoints")):
-        print("CHECKPOINT")
         get_node("/root/Game").checkpoint_reached($Area2D)
 
 func _on_Area2D_area_exited(area):
@@ -150,3 +155,27 @@ func _on_Area2D_area_exited(area):
     
 func get_nickname():
     return nickname
+    
+func get_current_checkpoint():
+    return current_checkpoint
+    
+func set_current_checkpoint(checkpoint):
+    current_checkpoint = checkpoint
+    
+func get_current_round():
+    return current_round
+    
+func set_current_round(cround):
+    current_round = cround
+    
+func get_interface_ref():
+    return interface_ref
+    
+func set_interface_ref(interface):
+    interface_ref = interface
+    
+func finish():
+    finished = true
+    
+func is_finished():
+    return finished
