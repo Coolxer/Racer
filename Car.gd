@@ -130,18 +130,6 @@ func _input():
         turning_right = true
     elif Input.is_action_just_released(turn_right_key):
         turning_right = false
-        
-#speed
-#acceleration
-#direction
-#gas
-#brake
-#turning
-#car angle
-#wheel angle
-#adhesion of the surface
-#grip of the wheels
-#driving back
 
 func _on_Area2D_area_entered(area):
     if(area.is_in_group("grounds")):
