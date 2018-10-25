@@ -141,7 +141,7 @@ shape = SubResource( 1 )
 
 [node name="RightDirt" type="Particles2D" parent="." index="3"]
 
-position = Vector2( 24, 42 )
+position = Vector2( 23, 42 )
 emitting = true
 amount = 100
 lifetime = 0.8

@@ -107,7 +107,11 @@ func _process(delta):
         left_wheel.rotate(current_rotation_angle * PI/180.0 - left_wheel.transform.get_rotation())
         right_wheel.rotate(current_rotation_angle * PI/180.0 - right_wheel.transform.get_rotation())
     
-    pass
+    #Calculate direction where particles should follow
+    var particles_direction = velocity.normalized().rotated(PI) * 98
+    
+    $LeftDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
+    $RightDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
  
 # Manage user input   
 func _input():
