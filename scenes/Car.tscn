@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Car.gd" type="Script" id=1]
 [ext_resource path="res://assets/car.png" type="Texture" id=2]
 [ext_resource path="res://assets/wheel.png" type="Texture" id=3]
+[ext_resource path="res://assets/car_engine.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,7 +14,8 @@ extents = Vector2( 22, 44 )
 
 render_priority = 0
 trail_divisor = 1
-emission_shape = 0
+emission_shape = 1
+emission_sphere_radius = 5.0
 flag_align_y = false
 flag_rotate_y = false
 flag_disable_z = true
@@ -46,13 +48,14 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
-_sections_unfolded = [ "Scale" ]
+_sections_unfolded = [ "Angular Velocity", "Flags" ]
 
 [node name="Car" type="Node2D" index="0"]
 
 position = Vector2( 515, 538 )
+z_index = 10
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 nickname = "Player"
 gas_pedal_key = "up_1"
 brake_pedal_key = "down_1"
@@ -144,7 +147,7 @@ shape = SubResource( 1 )
 position = Vector2( 23, 42 )
 emitting = true
 amount = 100
-lifetime = 0.8
+lifetime = 0.4
 one_shot = false
 preprocess = 0.0
 speed_scale = 1.0
@@ -160,14 +163,14 @@ texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Drawing", "Textures" ]
+_sections_unfolded = [ "Drawing", "Textures", "Time" ]
 
 [node name="LeftDirt" type="Particles2D" parent="." index="4"]
 
 position = Vector2( -23, 42 )
 emitting = true
 amount = 100
-lifetime = 0.8
+lifetime = 0.4
 one_shot = false
 preprocess = 0.0
 speed_scale = 1.0
@@ -183,7 +186,18 @@ texture = null
 normal_map = null
 h_frames = 1
 v_frames = 1
-_sections_unfolded = [ "Textures" ]
+_sections_unfolded = [ "Textures", "Time" ]
+
+[node name="Engine" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 

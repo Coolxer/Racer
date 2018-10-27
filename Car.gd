@@ -112,6 +112,8 @@ func _process(delta):
     
     $LeftDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
     $RightDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
+    
+    $Engine.pitch_scale = 0.75 + current_speed/max_forward_speed
  
 # Manage user input   
 func _input():
