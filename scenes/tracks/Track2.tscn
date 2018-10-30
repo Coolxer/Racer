@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/track2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tracks/Area2D.gd" type="Script" id=2]
+
+[node name="Track" type="Node2D" index="0"]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( 2, -5 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision" ]
+friction_factor = 0.99
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -199, -17, -180, -18, -90, 20, 83, 357, 107, 420, 211, 541, 384, 745, 546, 811, 584, 838, 703, 836, 797, 789, 871, 702, 900, 633, 1008, 603, 1116, 637, 1223, 765, 1302, 805, 1369, 816, 1459, 770, 1522, 728, 1619, 512, 1639, 155, 1674, -24, 1668, -336, 1691, -377, 1685, -442, 1668, -607, 1634, -697, 1396, -843, 1206, -871, 904, -869, 760, -842, 651, -795, 521, -681, 404, -643, 237, -646, -6, -746, -67, -626, 150, -526, 424, -485, 568, -526, 702, -622, 836, -690, 952, -713, 1109, -714, 1345, -653, 1502, -532, 1545, -442, 1545, -345, 1547, -20, 1512, 103, 1502, 315, 1420, 586, 1377, 625, 1289, 593, 1189, 494, 1026, 409, 849, 412, 809, 457, 735, 611, 672, 646, 581, 644, 493, 598, 328, 418, 155, 215, 46, -18, -48, -119, -131, -150, -242, -142, -328, -84, -386, 2, -485, 206, -600, 472, -831, 678, -991, 709, -1205, 662, -1247, 563, -1057, 118, -1036, 3, -1110, -223, -1215, -331, -1352, -420, -1365, -489, -1295, -592, -1019, -707, -694, -672, -506, -630, -352, -648, -266, -678, -67, -626, -6, -746, -138, -822, -286, -828, -515, -784, -698, -832, -1017, -852, -1363, -716, -1443, -621, -1504, -460, -1441, -328, -1284, -183, -1199, -17, -1189, 83, -1308, 396, -1417, 568, -1416, 729, -1309, 839, -1057, 867, -819, 830, -697, 768, -555, 634, -492, 547, -379, 378, -326, 183, -233, 7 )
+
+[node name="Checkpoints" type="Node2D" parent="." index="2"]
+
+[node name="Objects" type="Node2D" parent="." index="3"]
+
+

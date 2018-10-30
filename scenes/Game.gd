@@ -6,7 +6,7 @@ var rounds = 2
 #How many checkpoints are on the selected track
 var checkpoints = 0
 
-var track1 = preload("res://scenes/Track.tscn")
+var track1 = preload("res://scenes/tracks/Track1.tscn")
 var player1= preload("res://scenes/Car.tscn")
 
 var GUI = preload("res://scenes/GUI.tscn")
