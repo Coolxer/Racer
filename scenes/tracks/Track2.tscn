@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/track2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/tracks/Area2D.gd" type="Script" id=2]
 
-[node name="Track" type="Node2D" index="0"]
+[node name="Track" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

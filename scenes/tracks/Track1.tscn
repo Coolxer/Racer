@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Crate.tscn" type="PackedScene" id=4]
 
-[node name="Track" type="Node2D" index="0"]
+[node name="Track" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

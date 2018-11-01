@@ -32,6 +32,16 @@ func _ready():
     
     $Players.add_child(player1)
     
+    var player2 = player.instance()
+    player2.add_child(car2.instance())
+    
+    player2.gas_pedal_key = "up_2"
+    player2.brake_pedal_key = "down_2"
+    player2.turn_left_key = "left_2"
+    player2.turn_right_key = "right_2"
+    
+    $Players.add_child(player2)
+    
     checkpoints = _get_checkpoints_count()
     
     _setup_gui()
