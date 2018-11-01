@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/cars/Car2.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cars/Car1.gd" type="Script" id=1]
 [ext_resource path="res://assets/car.png" type="Texture" id=2]
 [ext_resource path="res://assets/wheel.png" type="Texture" id=3]
 [ext_resource path="res://assets/car_engine.wav" type="AudioStream" id=4]
@@ -55,7 +55,7 @@ _sections_unfolded = [ "Angular Velocity", "Flags" ]
 custom_solver_bias = 0.0
 extents = Vector2( 20, 44 )
 
-[node name="Car" type="Node2D"]
+[node name="Car" type="Node2D" index="0"]
 
 position = Vector2( 515, 538 )
 z_index = 10

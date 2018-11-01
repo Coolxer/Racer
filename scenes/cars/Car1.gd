@@ -102,9 +102,9 @@ func _process(delta):
     $Engine.pitch_scale = 0.75 + current_speed/max_forward_speed
  
 # Manage user input  
-var player = get_owner()
- 
 func _input():
+    var player = get_node("../")
+    
     if Input.is_action_just_pressed(player.gas_pedal_key):
         gas_pedal_pressed = true
     elif Input.is_action_just_released(player.gas_pedal_key):

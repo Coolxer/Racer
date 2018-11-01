@@ -7,16 +7,30 @@ var rounds = 2
 var checkpoints = 0
 
 var track1 = preload("res://scenes/tracks/Track1.tscn")
-var player1= preload("res://scenes/Car.tscn")
+var track2 = preload("res://scenes/tracks/Track2.tscn")
+
+var car1 = preload("res://scenes/cars/Car1.tscn")
+var car2 = preload("res://scenes/cars/Car2.tscn")
+
+var player= preload("res://scenes/Player.tscn")
 
 var GUI = preload("res://scenes/GUI.tscn")
 var GUI_player = preload("res://scenes/GUIPlayer.tscn")
 
 func _ready():
-    var track = track1.instance()
+    var track = track2.instance()
     
     add_child(track)
-    $Players.add_child(player1.instance())
+    
+    var player1 = player.instance()
+    player1.add_child(car1.instance())
+    
+    player1.gas_pedal_key = "up_1"
+    player1.brake_pedal_key = "down_1"
+    player1.turn_left_key = "left_1"
+    player1.turn_right_key = "right_1"
+    
+    $Players.add_child(player1)
     
     checkpoints = _get_checkpoints_count()
     
@@ -44,7 +58,7 @@ func _get_checkpoints_count():
     return get_node("Track/Checkpoints").get_child_count()
         
 func checkpoint_reached(area):
-    var player = area.get_owner()
+    var player = area.get_owner().get_owner()
     
     if(!player.is_finished()):
         var current_checkpoint = player.get_current_checkpoint()
