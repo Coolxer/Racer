@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/track1.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Area2D.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Checkpoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Crate.tscn" type="PackedScene" id=4]
 
-[node name="Track" type="Node2D"]
+[node name="Track" type="Node2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -16,6 +15,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Area2D" type="Area2D" parent="." index="1"]
 
 editor/display_folded = true
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -46,9 +46,5 @@ position = Vector2( 125.896, -210.065 )
 rotation = 1.04877
 
 [node name="Objects" type="Node2D" parent="." index="3"]
-
-[node name="Crate" parent="Objects" index="0" instance=ExtResource( 4 )]
-
-position = Vector2( 253, 354 )
 
 
