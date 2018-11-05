@@ -45,9 +45,6 @@ func _ready():
     checkpoints = _get_checkpoints_count()
     
     _setup_gui()
-
-func _process(delta):
-    pass
     
 func _setup_gui():
     $CanvasLayer.add_child(GUI.instance())
