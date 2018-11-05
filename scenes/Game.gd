@@ -64,9 +64,7 @@ func _setup_gui():
 func _get_checkpoints_count():
     return get_node("Track/Checkpoints").get_child_count()
         
-func checkpoint_reached(area):
-    var player = area.get_owner().get_owner()
-    
+func checkpoint_reached(player):    
     if(!player.is_finished()):
         var current_checkpoint = player.get_current_checkpoint()
         

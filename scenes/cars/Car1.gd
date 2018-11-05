@@ -127,10 +127,14 @@ func _input():
 
 func _on_Area2D_area_entered(area):
     if(area.is_in_group("grounds")):
-        ground_friction_factor = area.get_friction()
+        var track = area.get_parent()
+        
+        ground_friction_factor = track.get_friction()
    
     if(area.is_in_group("checkpoints")):
-        get_node("/root/Game").checkpoint_reached($Area2D)
+        var player = get_node("../")
+        
+        get_node("/root/Game").checkpoint_reached(player)
 
 func _on_Area2D_area_exited(area):
     if(area.is_in_group("grounds")):

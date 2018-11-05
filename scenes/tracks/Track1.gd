@@ -1,9 +1,9 @@
-extends Area2D
+extends Node2D
 
 export var friction_factor = 0.99
 
 func _ready():
-    add_to_group("grounds")
+    $Area2D.add_to_group("grounds")
 
 func get_friction():
     return friction_factor
