@@ -28,10 +28,18 @@ var hand_brake_pulled = false
 var turning_left = false
 var turning_right = false
 
+var min_dirt_particle_lifetime = 0.1
+var max_dirt_particle_lifetime = 0.5
+
+#Nodes
+var engine
+var left_dirt_emitter
+var right_dirt_emitter
+
 func _ready():
-    # Called when the node is added to the scene for the first time.
-    # Initialization here
-    pass
+    engine = $Engine
+    left_dirt_emitter = $LeftDirt
+    right_dirt_emitter = $RightDirt
 
 func _process(delta):
     _input()
@@ -96,10 +104,16 @@ func _process(delta):
     #Calculate direction where particles should follow
     var particles_direction = velocity.normalized().rotated(PI) * 98
     
-    $LeftDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
-    $RightDirt.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
+    left_dirt_emitter.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
+    right_dirt_emitter.process_material.gravity = Vector3(particles_direction.x, particles_direction.y, 0)
     
-    $Engine.pitch_scale = 0.75 + current_speed/max_forward_speed
+    engine.pitch_scale = 0.75 + current_speed/max_forward_speed
+    
+    #Depending if player is moving or not emit dirt from wheels
+    if current_speed != 0:
+        _toggle_dirt(true)
+    else:
+        _toggle_dirt(false)
  
 # Manage user input  
 func _input():
@@ -140,3 +154,7 @@ func _on_Area2D_area_exited(area):
     if(area.is_in_group("grounds")):
         ground_friction_factor = default_ground_friction_factor
         
+func _toggle_dirt(value):
+    left_dirt_emitter.emitting = value
+    right_dirt_emitter.emitting = value
+    
