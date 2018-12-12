@@ -64,23 +64,29 @@ func _setup_gui():
 func _get_checkpoints_count():
     return get_node("Track/Checkpoints").get_child_count()
         
-func checkpoint_reached(player):    
+func checkpoint_reached(player, checkpoint_index):    
     if(!player.is_finished()):
         var current_checkpoint = player.get_current_checkpoint()
         
-        current_checkpoint += 1
-        
-        if(current_checkpoint == checkpoints):
-            var current_round = player.get_current_round()
+        #Check checkpoint index undex track checkpoints parent
+        #to know which in order this checkpoints is
+        #and pass only when index is only bigger by value of 1
+        #this will force to passing checkpoints one by one
+        #by their node order in Checkpoint node of Track node
+        if (checkpoint_index + 1) - current_checkpoint == 1:
+            current_checkpoint += 1
             
-            current_round += 1
-
-            if(current_round > rounds):
-                player.finish()
-            else:
-                current_checkpoint = 0
-                player.set_current_round(current_round)
-                player.get_interface_ref().set_round(current_round, rounds)
-            
-        player.set_current_checkpoint(current_checkpoint)
-        player.get_interface_ref().set_checkpoint(current_checkpoint, checkpoints)
+            if(current_checkpoint == checkpoints):
+                var current_round = player.get_current_round()
+                
+                current_round += 1
+    
+                if(current_round > rounds):
+                    player.finish()
+                else:
+                    current_checkpoint = 0
+                    player.set_current_round(current_round)
+                    player.get_interface_ref().set_round(current_round, rounds)
+                
+            player.set_current_checkpoint(current_checkpoint)
+            player.get_interface_ref().set_checkpoint(current_checkpoint, checkpoints)

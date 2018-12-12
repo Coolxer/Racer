@@ -147,8 +147,9 @@ func _on_Area2D_area_entered(area):
    
     if(area.is_in_group("checkpoints")):
         var player = get_node("../")
+        var checkpoint_index = area.get_index()
         
-        get_node("/root/Game").checkpoint_reached(player)
+        get_node("/root/Game").checkpoint_reached(player, checkpoint_index)
 
 func _on_Area2D_area_exited(area):
     if(area.is_in_group("grounds")):
