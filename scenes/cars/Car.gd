@@ -92,7 +92,7 @@ func _process(delta):
             else:
                 rotate(deg2rad(-turn_piece))
                 
-    position += velocity
+    move_and_collide(velocity)
     
     var left_wheel = $Wheels/UpperLeft
     var right_wheel = $Wheels/UpperRight

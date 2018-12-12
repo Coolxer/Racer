@@ -55,10 +55,14 @@ _sections_unfolded = [ "Angular Velocity", "Flags" ]
 custom_solver_bias = 0.0
 extents = Vector2( 20, 44 )
 
-[node name="Car" type="Node2D" index="0"]
+[node name="Car" type="KinematicBody2D"]
 
 position = Vector2( 515, 538 )
 z_index = 10
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 max_forward_speed = 40.0
@@ -201,28 +205,7 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." index="6"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-mode = 3
-mass = 1.0
-friction = 1.0
-bounce = 0.0
-gravity_scale = 0.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-linear_velocity = Vector2( 0, 0 )
-linear_damp = -1.0
-angular_velocity = 0.0
-angular_damp = -1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 
 position = Vector2( 0, 10 )
 shape = SubResource( 3 )
