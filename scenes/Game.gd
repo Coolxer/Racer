@@ -9,8 +9,8 @@ var checkpoints = 0
 var track1 = preload("res://scenes/tracks/Track1.tscn")
 var track2 = preload("res://scenes/tracks/Track2.tscn")
 
-var car1 = preload("res://scenes/cars/Car1.tscn")
-var car2 = preload("res://scenes/cars/Car2.tscn")
+var carScene1 = preload("res://scenes/cars/Car1.tscn")
+var carScene2 = preload("res://scenes/cars/Car2.tscn")
 
 var player= preload("res://scenes/Player.tscn")
 
@@ -23,7 +23,13 @@ func _ready():
     add_child(track)
     
     var player1 = player.instance()
-    player1.add_child(car1.instance())
+    var car1 = carScene1.instance()
+    
+    var spawnpoint1 = get_node("Track/Spawnpoints").get_child(0)
+    car1.position = spawnpoint1.position
+    car1.rotation = spawnpoint1.rotation
+    
+    player1.add_child(car1)
     
     player1.gas_pedal_key = "up_1"
     player1.brake_pedal_key = "down_1"
@@ -33,7 +39,13 @@ func _ready():
     $Players.add_child(player1)
     
     var player2 = player.instance()
-    player2.add_child(car2.instance())
+    var car2 = carScene2.instance()
+    
+    var spawnpoint2 = get_node("Track/Spawnpoints").get_child(1)
+    car2.position = spawnpoint2.position
+    car2.rotation = spawnpoint2.rotation
+    
+    player2.add_child(car2)
     
     player2.gas_pedal_key = "up_2"
     player2.brake_pedal_key = "down_2"
