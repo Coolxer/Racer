@@ -1,6 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="GUI" type="MarginContainer" index="0"]
+[ext_resource path="res://scenes/Players.gd" type="Script" id=1]
+
+[node name="GUI" type="MarginContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -36,6 +38,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
+script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Margin" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]

@@ -12,7 +12,7 @@ var current_checkpoint = 0
 var current_round = 0
 var finished = false
 
-var interface_ref = null
+var GUI_player_node = null
 
 func get_nickname():
     return nickname
@@ -28,12 +28,6 @@ func get_current_round():
     
 func set_current_round(cround):
     current_round = cround
-    
-func get_interface_ref():
-    return interface_ref
-    
-func set_interface_ref(interface):
-    interface_ref = interface
     
 func finish():
     finished = true

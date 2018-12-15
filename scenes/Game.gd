@@ -6,28 +6,31 @@ var rounds = 2
 #How many checkpoints are on the selected track
 var checkpoints = 0
 
-var track1 = preload("res://scenes/tracks/Track1.tscn")
-var track2 = preload("res://scenes/tracks/Track2.tscn")
+var track_scene_1 = preload("res://scenes/tracks/Track1.tscn")
+var track_scene_2 = preload("res://scenes/tracks/Track2.tscn")
 
-var carScene1 = preload("res://scenes/cars/Car1.tscn")
-var carScene2 = preload("res://scenes/cars/Car2.tscn")
+var car_scene_1 = preload("res://scenes/cars/Car1.tscn")
+var car_scene_2 = preload("res://scenes/cars/Car2.tscn")
 
-var player= preload("res://scenes/Player.tscn")
+var player_scene = preload("res://scenes/Player.tscn")
 
-var GUI = preload("res://scenes/GUI.tscn")
-var GUI_player = preload("res://scenes/GUIPlayer.tscn")
+var GUI_scene = preload("res://scenes/GUI.tscn")
+var GUI_player_scene = preload("res://scenes/GUIPlayer.tscn")
+
+#GUI node containing all players
+var GUI_players_node
 
 #Timestamp when game was started (or resumed when pause will be implemented)
 var time_start = 0
 var timer_label
 
 func _ready():
-    var track = track2.instance()
+    var track = track_scene_2.instance()
     
     add_child(track)
     
-    var player1 = player.instance()
-    var car1 = carScene1.instance()
+    var player1 = player_scene.instance()
+    var car1 = car_scene_1.instance()
     
     var spawnpoint1 = get_node("Track/Spawnpoints").get_child(0)
     car1.position = spawnpoint1.position
@@ -42,8 +45,8 @@ func _ready():
     
     $Players.add_child(player1)
     
-    var player2 = player.instance()
-    var car2 = carScene2.instance()
+    var player2 = player_scene.instance()
+    var car2 = car_scene_2.instance()
     
     var spawnpoint2 = get_node("Track/Spawnpoints").get_child(1)
     car2.position = spawnpoint2.position
@@ -68,21 +71,24 @@ func _ready():
     
 func _process(delta):
     _update_timer()
-    
+  
+#Instance main gui and fill with choosen players  
 func _setup_gui():
-    $CanvasLayer.add_child(GUI.instance())
+    $CanvasLayer.add_child(GUI_scene.instance())
+    
+    GUI_players_node = get_node("CanvasLayer/GUI/Players")
     
     for player in $Players.get_children():
-        var player_interface = GUI_player.instance()
+        var GUI_player_node = GUI_player_scene.instance()
         
-        player.set_interface_ref(player_interface)
+        #Set reference for player to it's GUI part
+        player.GUI_player_node = GUI_player_node
         
-        player_interface.set_nickname(player.get_nickname())
-        player_interface.set_round(0, rounds)
+        GUI_player_node.set_nickname(player.get_nickname())
+        GUI_player_node.set_round(0, rounds)        
+        GUI_player_node.set_checkpoint(0, checkpoints)
         
-        player_interface.set_checkpoint(0, checkpoints)
-        
-        get_node("CanvasLayer/GUI/Players").add_child(player_interface)
+        GUI_players_node.register_player(player)
 
 func _update_timer():
     var time_now = OS.get_unix_time()
@@ -117,7 +123,10 @@ func checkpoint_reached(player, checkpoint_index):
                 else:
                     current_checkpoint = 0
                     player.set_current_round(current_round)
-                    player.get_interface_ref().set_round(current_round, rounds)
+                    player.GUI_player_node.set_round(current_round, rounds)
                 
             player.set_current_checkpoint(current_checkpoint)
-            player.get_interface_ref().set_checkpoint(current_checkpoint, checkpoints)
+            player.GUI_player_node.set_checkpoint(current_checkpoint, checkpoints)
+            
+            #After someone of players reached next checkpoint/round update ranking
+            GUI_players_node.update_order()
