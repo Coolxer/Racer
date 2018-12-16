@@ -20,9 +20,7 @@ var GUI_player_scene = preload("res://scenes/GUIPlayer.tscn")
 #GUI node containing all players
 var GUI_players_node
 
-#Timestamp when game was started (or resumed when pause will be implemented)
-var time_start = 0
-var timer_label
+var GUI_timer_node
 
 func _ready():
     var track = track_scene_2.instance()
@@ -65,18 +63,17 @@ func _ready():
     
     _setup_gui()
     
-    #Init start time
-    time_start = OS.get_unix_time()
-    timer_label = get_node("CanvasLayer/GUI/VBoxContainer/Timer/Label")
-    
 func _process(delta):
-    _update_timer()
+    GUI_timer_node.update()
   
 #Instance main gui and fill with choosen players  
 func _setup_gui():
     $CanvasLayer.add_child(GUI_scene.instance())
     
     GUI_players_node = get_node("CanvasLayer/GUI/Players")
+    GUI_timer_node = get_node("CanvasLayer/GUI/VBoxContainer/Timer")
+    
+    GUI_timer_node.start()
     
     for player in $Players.get_children():
         var GUI_player_node = GUI_player_scene.instance()
@@ -89,14 +86,6 @@ func _setup_gui():
         GUI_player_node.set_checkpoint(0, checkpoints)
         
         GUI_players_node.register_player(player)
-
-func _update_timer():
-    var time_now = OS.get_unix_time()
-    var elapsed = time_now - time_start
-    var minutes = elapsed / 60
-    var seconds = elapsed % 60
-    var str_elapsed = "%02d : %02d" % [minutes, seconds]
-    timer_label.text = str_elapsed
 
 func _get_checkpoints_count():
     return get_node("Track/Checkpoints").get_child_count()
