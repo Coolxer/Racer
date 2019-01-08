@@ -5,6 +5,16 @@ export var scenes = {
     "configuration": "res://scenes/Configuration.tscn"
 }
 
+export var tracks = {
+    "Track1": "res://scenes/tracks/Track1.tscn",
+    "Track2": "res://scenes/tracks/Track2.tscn"
+}
+
+export var cars = {
+    "Car1": "res://scenes/cars/Car1.tscn",
+    "Car2": "res://scenes/cars/Car2.tscn"
+}
+
 var current_scene = null
 
 func _ready():
@@ -13,6 +23,12 @@ func _ready():
         
 func load_scene(path):
 	call_deferred("_deferred_goto_scene", path)
+
+func menu():
+    load_scene(Manager.scenes["menu"])
+
+func configure():
+    load_scene(Manager.scenes["configuration"])
 
 func _deferred_goto_scene(path):
     current_scene.free()
