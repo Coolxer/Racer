@@ -1,11 +1,5 @@
 extends VBoxContainer
 
-export var icons = {
-    "p1": preload("res://assets/p1.png"),
-    "p2": preload("res://assets/p2.png"),
-    "p3": preload("res://assets/p3.png")
-}
-
 var current_player_index = 0
 
 func _ready():
@@ -23,6 +17,3 @@ func _on_Start_pressed():
 
 func _on_Back_pressed():
     Manager.menu()
-
-func _on_TextureButton_pressed(index):
-    $CarsContainer.get_child(index).get_child(0).texture = icons["p1"]
