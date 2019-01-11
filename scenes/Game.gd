@@ -1,16 +1,10 @@
 extends Node2D
 
 #How many times players have to drive trough track 
-var rounds = 2
+var rounds = 1
 
 #How many checkpoints are on the selected track
 var checkpoints = 0
-
-var track_scene_1 = preload("res://scenes/tracks/Track1.tscn")
-var track_scene_2 = preload("res://scenes/tracks/Track2.tscn")
-
-var car_scene_1 = preload("res://scenes/cars/Car1.tscn")
-var car_scene_2 = preload("res://scenes/cars/Car2.tscn")
 
 var player_scene = preload("res://scenes/Player.tscn")
 
@@ -22,42 +16,13 @@ var GUI_players_node
 
 var GUI_timer_node
 
+var track_node
+
 func _ready():
-    var track = track_scene_2.instance()
+    _setup_track()
+    _setup_players()
     
-    add_child(track)
-    
-    var player1 = player_scene.instance()
-    var car1 = car_scene_1.instance()
-    
-    var spawnpoint1 = get_node("Track/Spawnpoints").get_child(0)
-    car1.position = spawnpoint1.position
-    car1.rotation = spawnpoint1.rotation
-    
-    player1.add_child(car1)
-    
-    player1.gas_pedal_key = "up_1"
-    player1.brake_pedal_key = "down_1"
-    player1.turn_left_key = "left_1"
-    player1.turn_right_key = "right_1"
-    
-    $Players.add_child(player1)
-    
-    var player2 = player_scene.instance()
-    var car2 = car_scene_2.instance()
-    
-    var spawnpoint2 = get_node("Track/Spawnpoints").get_child(1)
-    car2.position = spawnpoint2.position
-    car2.rotation = spawnpoint2.rotation
-    
-    player2.add_child(car2)
-    
-    player2.gas_pedal_key = "up_2"
-    player2.brake_pedal_key = "down_2"
-    player2.turn_left_key = "left_2"
-    player2.turn_right_key = "right_2"
-    
-    $Players.add_child(player2)
+    rounds = Manager.round_amount
     
     checkpoints = _get_checkpoints_count()
     
@@ -89,6 +54,37 @@ func _setup_gui():
 
 func _get_checkpoints_count():
     return get_node("Track/Checkpoints").get_child_count()
+    
+func _setup_track():
+    if Manager.track_scene != null:
+        track_node = Manager.track_scene.instance()
+    
+    add_child(track_node)
+    
+func _setup_players():
+    var player_index = 0
+    
+    for car_scene in Manager.car_scenes:
+        var player_node = player_scene.instance()
+        var car_node = car_scene.instance()
+        
+        var spawnpoint = get_node("Track/Spawnpoints").get_child(player_index)
+        
+        car_node.position = spawnpoint.position
+        car_node.rotation = spawnpoint.rotation
+        
+        player_node.add_child(car_node)
+        
+        var keys = Manager.keys[player_index]
+        
+        player_node.gas_pedal_key = keys["up"]
+        player_node.brake_pedal_key = keys["down"]
+        player_node.turn_left_key = keys["left"]
+        player_node.turn_right_key = keys["right"]
+    
+        $Players.add_child(player_node)
+        
+        player_index += 1
         
 func checkpoint_reached(player, checkpoint_index):    
     if(!player.is_finished()):
