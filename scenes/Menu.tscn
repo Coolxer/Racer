@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu.png" type="Texture" id=2]
+[ext_resource path="res://assets/SmallFont.tres" type="DynamicFont" id=3]
 
 [node name="Menu" type="MarginContainer"]
 
@@ -108,6 +109,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -115,7 +117,7 @@ group = null
 text = "Play"
 flat = false
 align = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="Options" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer" index="1"]
 
@@ -133,6 +135,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
@@ -141,6 +144,7 @@ group = null
 text = "Options"
 flat = false
 align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Exit" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer" index="2"]
 
@@ -158,6 +162,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -165,6 +170,7 @@ group = null
 text = "Exit"
 flat = false
 align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 

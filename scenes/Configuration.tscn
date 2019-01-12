@@ -1,22 +1,24 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Configuration.gd" type="Script" id=1]
-[ext_resource path="res://scenes/TracksContainer.gd" type="Script" id=2]
-[ext_resource path="res://assets/track1_miniature.png" type="Texture" id=3]
-[ext_resource path="res://assets/track1_miniature_pressed.png" type="Texture" id=4]
-[ext_resource path="res://assets/track1_miniature_hovered.png" type="Texture" id=5]
-[ext_resource path="res://assets/track2_miniature.png" type="Texture" id=6]
-[ext_resource path="res://assets/track2_miniature_pressed.png" type="Texture" id=7]
-[ext_resource path="res://scenes/CarsContainer.gd" type="Script" id=8]
-[ext_resource path="res://assets/p1.png" type="Texture" id=9]
-[ext_resource path="res://assets/p2.png" type="Texture" id=10]
-[ext_resource path="res://assets/p3.png" type="Texture" id=11]
-[ext_resource path="res://assets/car1.png" type="Texture" id=12]
-[ext_resource path="res://assets/car1_selected.png" type="Texture" id=13]
-[ext_resource path="res://assets/car2.png" type="Texture" id=14]
-[ext_resource path="res://assets/car2_selected.png" type="Texture" id=15]
+[ext_resource path="res://assets/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/TracksContainer.gd" type="Script" id=3]
+[ext_resource path="res://assets/track1_miniature.png" type="Texture" id=4]
+[ext_resource path="res://assets/track1_miniature_pressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/track1_miniature_hovered.png" type="Texture" id=6]
+[ext_resource path="res://assets/track2_miniature.png" type="Texture" id=7]
+[ext_resource path="res://assets/track2_miniature_pressed.png" type="Texture" id=8]
+[ext_resource path="res://scenes/CarsContainer.gd" type="Script" id=9]
+[ext_resource path="res://assets/p1.png" type="Texture" id=10]
+[ext_resource path="res://assets/p2.png" type="Texture" id=11]
+[ext_resource path="res://assets/p3.png" type="Texture" id=12]
+[ext_resource path="res://assets/car1.png" type="Texture" id=13]
+[ext_resource path="res://assets/car1_selected.png" type="Texture" id=14]
+[ext_resource path="res://assets/car2.png" type="Texture" id=15]
+[ext_resource path="res://assets/car2_selected.png" type="Texture" id=16]
+[ext_resource path="res://assets/SmallFont.tres" type="DynamicFont" id=17]
 
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=2]
 
 flags = 4
 load_path = "res://.import/track2_miniature_hovered.png-7fa9402777a2479ed2172376a4ddc0fc.stex"
@@ -47,18 +49,20 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 380.0
-margin_bottom = 14.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
 text = "Select map"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="TracksContainer" type="HBoxContainer" parent="." index="1"]
 
@@ -66,9 +70,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 18.0
+margin_top = 44.0
 margin_right = 380.0
-margin_bottom = 131.0
+margin_bottom = 157.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -76,7 +80,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Track1" type="TextureButton" parent="TracksContainer" index="0"]
 
@@ -97,9 +101,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Track2" type="TextureButton" parent="TracksContainer" index="1"]
@@ -122,9 +126,9 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = SubResource( 1 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = SubResource( 2 )
 _sections_unfolded = [ "Mouse", "Textures" ]
 
 [node name="CarsLabel" type="Label" parent="." index="2"]
@@ -133,20 +137,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 135.0
+margin_top = 161.0
 margin_right = 380.0
-margin_bottom = 149.0
+margin_bottom = 201.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
 text = "Select players"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_constants", "custom_fonts" ]
 
 [node name="CarsContainer" type="HBoxContainer" parent="." index="3"]
 
@@ -154,9 +160,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 153.0
+margin_top = 205.0
 margin_right = 380.0
-margin_bottom = 285.0
+margin_bottom = 337.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -164,8 +170,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 1
-script = ExtResource( 8 )
-icons = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
+script = ExtResource( 9 )
+icons = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
 
 [node name="Car1" type="VBoxContainer" parent="CarsContainer" index="0"]
 
@@ -219,8 +225,8 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 13 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Car2" type="VBoxContainer" parent="CarsContainer" index="1"]
@@ -275,8 +281,8 @@ toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 14 )
-texture_pressed = ExtResource( 15 )
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="RoundsLabel" type="Label" parent="." index="4"]
@@ -285,20 +291,22 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 289.0
+margin_top = 341.0
 margin_right = 380.0
-margin_bottom = 303.0
+margin_bottom = 381.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
 text = "Set rounds count"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="RoundsButton" type="OptionButton" parent="." index="5"]
 
@@ -306,9 +314,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 307.0
+margin_top = 385.0
 margin_right = 380.0
-margin_bottom = 327.0
+margin_bottom = 414.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -316,6 +324,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 17 )
 toggle_mode = false
 action_mode = 0
 enabled_focus_mode = 2
@@ -325,6 +334,7 @@ flat = false
 align = 1
 items = [  ]
 selected = -1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Start" type="Button" parent="." index="6"]
 
@@ -332,9 +342,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 331.0
+margin_top = 418.0
 margin_right = 380.0
-margin_bottom = 351.0
+margin_bottom = 438.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -342,6 +352,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -349,6 +360,7 @@ group = null
 text = "Start"
 flat = false
 align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
 [node name="Back" type="Button" parent="." index="7"]
 
@@ -356,9 +368,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 355.0
+margin_top = 442.0
 margin_right = 380.0
-margin_bottom = 375.0
+margin_bottom = 462.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -366,6 +378,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_fonts/font = ExtResource( 17 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -373,6 +386,7 @@ group = null
 text = "Back"
 flat = false
 align = 1
+_sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="pressed" from="TracksContainer/Track1" to="TracksContainer" method="_on_Track_pressed" binds= [ 0 ]]
 
