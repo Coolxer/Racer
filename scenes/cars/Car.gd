@@ -55,3 +55,15 @@ func _integrate_forces(state):
     if stop_turning_right:
         set_applied_torque(0)
         stop_turning_right = false
+        
+func _on_Area2D_area_entered(area):
+    if(area.is_in_group("grounds")):
+        var track = area.get_parent()
+        
+        #drag = track.get_friction()
+   
+    if(area.is_in_group("checkpoints")):
+        var player = get_node("../")
+        var checkpoint_index = area.get_index()
+        
+        get_node("/root/Game").checkpoint_reached(player, checkpoint_index)

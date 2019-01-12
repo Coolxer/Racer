@@ -9,7 +9,7 @@ func _ready():
     $RoundsButton.add_item("4")
 
 func _on_Start_pressed():    
-    var rounds = $RoundsButton.get_item_text($RoundsButton.selected)
+    var rounds = int($RoundsButton.get_item_text($RoundsButton.selected))
     Manager.game($TracksContainer.selected, $CarsContainer.players, rounds)
 
 func _on_Back_pressed():

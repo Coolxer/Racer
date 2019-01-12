@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Camera2D.gd" type="Script" id=2]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -33,7 +33,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 script = ExtResource( 2 )
 _sections_unfolded = [ "Smoothing" ]
-camera_speed = 300.0
+camera_speed = 500.0
 
 [node name="Players" type="Node2D" parent="." index="1"]
 
