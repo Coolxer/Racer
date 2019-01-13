@@ -13,7 +13,8 @@ export var tracks = {
 
 export var cars = {
     "Car1": "res://scenes/cars/Car1.tscn",
-    "Car2": "res://scenes/cars/Car2.tscn"
+    "Car2": "res://scenes/cars/Car2.tscn",
+    "Car3": "res://scenes/cars/Car3.tscn"
 }
 
 export var keys = [
