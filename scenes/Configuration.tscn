@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/car2_selected.png" type="Texture" id=16]
 [ext_resource path="res://assets/SmallFont.tres" type="DynamicFont" id=17]
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 
 flags = 4
 load_path = "res://.import/track2_miniature_hovered.png-7fa9402777a2479ed2172376a4ddc0fc.stex"
@@ -128,7 +128,7 @@ shortcut = null
 group = null
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
-texture_hover = SubResource( 2 )
+texture_hover = SubResource( 1 )
 _sections_unfolded = [ "Mouse", "Textures" ]
 
 [node name="CarsLabel" type="Label" parent="." index="2"]
@@ -344,7 +344,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 418.0
 margin_right = 380.0
-margin_bottom = 438.0
+margin_bottom = 447.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -368,9 +368,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 442.0
+margin_top = 451.0
 margin_right = 380.0
-margin_bottom = 462.0
+margin_bottom = 480.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

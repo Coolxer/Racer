@@ -40,7 +40,7 @@ down_2=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":""
 [physics]
 
 2d/default_gravity=0
-2d/default_linear_damp=1.8
+2d/default_linear_damp=4.0
 2d/default_angular_damp=4
 
 [rendering]

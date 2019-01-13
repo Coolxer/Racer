@@ -13,7 +13,7 @@
 [node name="Track" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-friction_factor = 0.99
+damp = 1.8
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

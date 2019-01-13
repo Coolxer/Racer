@@ -60,6 +60,7 @@ func _on_Area2D_area_entered(area):
     if(area.is_in_group("grounds")):
         var track = area.get_parent()
         
+        linear_damp = track.damp
         #drag = track.get_friction()
    
     if(area.is_in_group("checkpoints")):
@@ -67,3 +68,7 @@ func _on_Area2D_area_entered(area):
         var checkpoint_index = area.get_index()
         
         get_node("/root/Game").checkpoint_reached(player, checkpoint_index)
+        
+func _on_Area2D_area_exited(area):
+    if(area.is_in_group("grounds")):
+        linear_damp = -1

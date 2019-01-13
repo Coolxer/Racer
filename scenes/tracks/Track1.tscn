@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/tracks/Track.gd" type="Script" id=1]
 [ext_resource path="res://assets/track1.png" type="Texture" id=2]
 
-[node name="Track" type="Node2D" index="0"]
+[node name="Track" type="Node2D"]
 
 script = ExtResource( 1 )
 friction_factor = 0.99
