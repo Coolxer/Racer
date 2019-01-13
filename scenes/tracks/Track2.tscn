@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/tracks/Track2.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tracks/Track.gd" type="Script" id=1]
 [ext_resource path="res://assets/track2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/CheckpointLine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/FinishLine.tscn" type="PackedScene" id=4]
@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/background2.png" type="Texture" id=8]
 [ext_resource path="res://assets/background3.png" type="Texture" id=9]
 
-[node name="Track" type="Node2D"]
+[node name="Track" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 friction_factor = 0.99
