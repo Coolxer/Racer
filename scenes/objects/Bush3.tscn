@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/objects/Object.gd" type="Script" id=1]
-[ext_resource path="res://assets/bush1.png" type="Texture" id=2]
+[ext_resource path="res://assets/bush3.png" type="Texture" id=2]
 [ext_resource path="res://assets/bush.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 20.0
-height = 60.0
+radius = 33.6673
+height = 122.0
 
-[node name="Bush1" type="StaticBody2D"]
+[node name="Bush3" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -27,7 +27,8 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 1 )
+position = Vector2( -8.10603, -0.211571 )
+rotation = -0.0952936
 shape = SubResource( 1 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]

@@ -1,16 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/tracks/Track.gd" type="Script" id=1]
 [ext_resource path="res://assets/track2.png" type="Texture" id=2]
 [ext_resource path="res://scenes/CheckpointLine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/FinishLine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/objects/Bush1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/objects/Rock1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/objects/Background1.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/background2.png" type="Texture" id=8]
-[ext_resource path="res://assets/background3.png" type="Texture" id=9]
+[ext_resource path="res://scenes/objects/Rock4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/objects/Bush1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/objects/Rock1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/objects/Background1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/objects/Bush3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/objects/Bush2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/objects/Rock2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/objects/Rock3.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/background2.png" type="Texture" id=13]
+[ext_resource path="res://assets/background3.png" type="Texture" id=14]
 
-[node name="Track" type="Node2D"]
+[node name="Track" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 damp = 1.8
@@ -38,8 +43,6 @@ build_mode = 0
 polygon = PoolVector2Array( -199, -17, -180, -18, -90, 20, 83, 357, 107, 420, 211, 541, 384, 745, 546, 811, 584, 838, 703, 836, 797, 789, 871, 702, 900, 633, 1008, 603, 1116, 637, 1223, 765, 1302, 805, 1369, 816, 1459, 770, 1522, 728, 1619, 512, 1639, 155, 1674, -24, 1668, -336, 1691, -377, 1685, -442, 1668, -607, 1634, -697, 1396, -843, 1206, -871, 904, -869, 760, -842, 651, -795, 521, -681, 404, -643, 237, -646, -6, -746, -67, -626, 150, -526, 424, -485, 568, -526, 702, -622, 836, -690, 952, -713, 1109, -714, 1345, -653, 1502, -532, 1545, -442, 1545, -345, 1547, -20, 1512, 103, 1502, 315, 1420, 586, 1377, 625, 1289, 593, 1189, 494, 1026, 409, 849, 412, 809, 457, 735, 611, 672, 646, 581, 644, 493, 598, 328, 418, 155, 215, 46, -18, -48, -119, -131, -150, -242, -142, -328, -84, -386, 2, -485, 206, -600, 472, -831, 678, -991, 709, -1205, 662, -1247, 563, -1057, 118, -1036, 3, -1110, -223, -1215, -331, -1352, -420, -1365, -489, -1295, -592, -1019, -707, -694, -672, -506, -630, -352, -648, -266, -678, -67, -626, -6, -746, -138, -822, -286, -828, -515, -784, -698, -832, -1017, -852, -1363, -716, -1443, -621, -1504, -460, -1441, -328, -1284, -183, -1199, -17, -1189, 83, -1308, 396, -1417, 568, -1416, 729, -1309, 839, -1057, 867, -819, 830, -697, 768, -555, 634, -492, 547, -379, 378, -326, 183, -233, 7 )
 
 [node name="Checkpoints" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="CheckpointLine" parent="Checkpoints" index="0" instance=ExtResource( 3 )]
 
@@ -89,86 +92,147 @@ scale = Vector2( 1.7353, 1 )
 z_index = 20
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Bush1" parent="Objects" index="0" instance=ExtResource( 5 )]
+[node name="Rock9" parent="Objects" index="0" instance=ExtResource( 5 )]
+
+position = Vector2( 830, -380 )
+
+[node name="Rock5" parent="Objects" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 1030, -570 )
+
+[node name="Rock6" parent="Objects" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 390, 300 )
+
+[node name="Rock7" parent="Objects" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( -170, 340 )
+
+[node name="Rock8" parent="Objects" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( -710, -350 )
+
+[node name="Bush1" parent="Objects" index="5" instance=ExtResource( 6 )]
 
 position = Vector2( -130, -470 )
 
-[node name="Rock1" parent="Objects" index="1" instance=ExtResource( 6 )]
+[node name="Bush6" parent="Objects" index="6" instance=ExtResource( 6 )]
+
+position = Vector2( -1290, -510 )
+rotation = 0.528895
+
+[node name="Rock1" parent="Objects" index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 170, -100 )
 
-[node name="Background1" parent="Objects" index="2" instance=ExtResource( 7 )]
+[node name="Background1" parent="Objects" index="8" instance=ExtResource( 8 )]
 
 position = Vector2( -890.776, 1487.44 )
 rotation = -0.157221
 
-[node name="Background2" parent="Objects" index="3" instance=ExtResource( 7 )]
+[node name="Background2" parent="Objects" index="9" instance=ExtResource( 8 )]
 
 position = Vector2( -13.256, 1494.26 )
 rotation = 0.152612
 
-[node name="Background3" parent="Objects" index="4" instance=ExtResource( 7 )]
+[node name="Background3" parent="Objects" index="10" instance=ExtResource( 8 )]
 
 position = Vector2( 482, 1512.13 )
 
-[node name="Background4" parent="Objects" index="5" instance=ExtResource( 7 )]
+[node name="Background4" parent="Objects" index="11" instance=ExtResource( 8 )]
 
 position = Vector2( 1442, 1522.13 )
 
-[node name="Background5" parent="Objects" index="6" instance=ExtResource( 7 )]
+[node name="Background5" parent="Objects" index="12" instance=ExtResource( 8 )]
 
 position = Vector2( 2171.99, 1268.15 )
 rotation = -0.561709
 
-[node name="Background6" parent="Objects" index="7" instance=ExtResource( 7 )]
+[node name="Background6" parent="Objects" index="13" instance=ExtResource( 8 )]
 
 position = Vector2( 2642.81, 391.663 )
 rotation = -1.57065
 
-[node name="Background7" parent="Objects" index="8" instance=ExtResource( 7 )]
+[node name="Background7" parent="Objects" index="14" instance=ExtResource( 8 )]
 
 position = Vector2( 2523.35, -594.903 )
 rotation = -1.81666
 
-[node name="Background8" parent="Objects" index="9" instance=ExtResource( 7 )]
+[node name="Background8" parent="Objects" index="15" instance=ExtResource( 8 )]
 
 position = Vector2( 1881.96, -1385.86 )
 rotation = -2.69169
 
-[node name="Background9" parent="Objects" index="10" instance=ExtResource( 7 )]
+[node name="Background9" parent="Objects" index="16" instance=ExtResource( 8 )]
 
 position = Vector2( 896.233, -1605.56 )
 rotation = -3.16563
 
-[node name="Background10" parent="Objects" index="11" instance=ExtResource( 7 )]
+[node name="Background10" parent="Objects" index="17" instance=ExtResource( 8 )]
 
 position = Vector2( -43.0711, -1595.83 )
 rotation = -3.14339
 
-[node name="Background11" parent="Objects" index="12" instance=ExtResource( 7 )]
+[node name="Background11" parent="Objects" index="18" instance=ExtResource( 8 )]
 
 position = Vector2( -995.253, -1602.21 )
 rotation = -3.14339
 
-[node name="Background12" parent="Objects" index="13" instance=ExtResource( 7 )]
+[node name="Background12" parent="Objects" index="19" instance=ExtResource( 8 )]
 
 position = Vector2( -1947.02, -1250.56 )
 rotation = -3.8438
 
-[node name="Background13" parent="Objects" index="14" instance=ExtResource( 7 )]
+[node name="Background13" parent="Objects" index="20" instance=ExtResource( 8 )]
 
 position = Vector2( -2350.21, -343.082 )
 rotation = -4.71774
 
-[node name="Background14" parent="Objects" index="15" instance=ExtResource( 7 )]
+[node name="Background14" parent="Objects" index="21" instance=ExtResource( 8 )]
 
 position = Vector2( -2345.79, 586.863 )
 rotation = -4.71774
 
-[node name="Background15" parent="Objects" index="16" instance=ExtResource( 7 )]
+[node name="Background15" parent="Objects" index="22" instance=ExtResource( 8 )]
 
 position = Vector2( -1796.05, 1340.47 )
 rotation = -5.86913
+
+[node name="Bush3" parent="Objects" index="23" instance=ExtResource( 9 )]
+
+position = Vector2( -1110, 540 )
+
+[node name="Bush7" parent="Objects" index="24" instance=ExtResource( 9 )]
+
+position = Vector2( 395.647, -751.139 )
+rotation = 1.45511
+
+[node name="Bush4" parent="Objects" index="25" instance=ExtResource( 9 )]
+
+position = Vector2( 652.232, 503.57 )
+rotation = 0.511703
+
+[node name="Bush2" parent="Objects" index="26" instance=ExtResource( 10 )]
+
+position = Vector2( 1380, 560 )
+
+[node name="Bush5" parent="Objects" index="27" instance=ExtResource( 10 )]
+
+position = Vector2( 1463.14, -480.884 )
+rotation = 2.65289
+
+[node name="Rock2" parent="Objects" index="28" instance=ExtResource( 7 )]
+
+position = Vector2( -1498.48, 862.391 )
+scale = Vector2( -1, 1 )
+
+[node name="Rock3" parent="Objects" index="29" instance=ExtResource( 11 )]
+
+position = Vector2( -840, 240 )
+
+[node name="Rock4" parent="Objects" index="30" instance=ExtResource( 12 )]
+
+position = Vector2( 1210, 130 )
 
 [node name="Spawnpoints" type="Node2D" parent="." index="4"]
 
@@ -199,152 +263,127 @@ _sections_unfolded = [ "Z Index" ]
 [node name="Background1" type="Sprite" parent="Ground" index="0"]
 
 position = Vector2( -1440, 1240 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background2" type="Sprite" parent="Ground" index="1"]
 
 position = Vector2( -520, 1320 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background3" type="Sprite" parent="Ground" index="2"]
 
 position = Vector2( 400, 1310 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background4" type="Sprite" parent="Ground" index="3"]
 
 position = Vector2( 1320, 1310 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background5" type="Sprite" parent="Ground" index="4"]
 
 position = Vector2( 2130, 1070 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background6" type="Sprite" parent="Ground" index="5"]
 
 position = Vector2( -1380, -1180 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background7" type="Sprite" parent="Ground" index="6"]
 
 position = Vector2( -440, -1260 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background8" type="Sprite" parent="Ground" index="7"]
 
 position = Vector2( 480, -1210 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background9" type="Sprite" parent="Ground" index="8"]
 
 position = Vector2( 1300, -1290 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background10" type="Sprite" parent="Ground" index="9"]
 
 position = Vector2( 1770, -1190 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background11" type="Sprite" parent="Ground" index="10"]
 
 position = Vector2( 2190, -710 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background12" type="Sprite" parent="Ground" index="11"]
 
 position = Vector2( 2270, 540 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background13" type="Sprite" parent="Ground" index="12"]
 
 position = Vector2( 2270, 180 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background14" type="Sprite" parent="Ground" index="13"]
 
 position = Vector2( 2210, -330 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background15" type="Sprite" parent="Ground" index="14"]
 
 position = Vector2( -1720, -1030 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background16" type="Sprite" parent="Ground" index="15"]
 
 position = Vector2( -2090, -520 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background17" type="Sprite" parent="Ground" index="16"]
 
 position = Vector2( -2080, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background18" type="Sprite" parent="Ground" index="17"]
 
 position = Vector2( -2040, 530 )
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="Background19" type="Sprite" parent="Ground" index="18"]
 
 position = Vector2( -2023.98, 856.096 )
 rotation = 0.65498
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
-[node name="BackgroundCanyon" type="Sprite" parent="Ground" index="19"]
+[node name="BackgroundCanyon1" type="Sprite" parent="Ground" index="19"]
 
-position = Vector2( -670, 2000 )
-texture = ExtResource( 9 )
+position = Vector2( 50, -60 )
+scale = Vector2( 4.82552, 6.30556 )
+z_index = -100
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Z Index" ]
 
-[node name="BackgroundCanyon10" type="Sprite" parent="Ground" index="20"]
-
-position = Vector2( 1090, 2250 )
-texture = ExtResource( 9 )
-
-[node name="BackgroundCanyon2" type="Sprite" parent="Ground" index="21"]
+[node name="BackgroundCanyon2" type="Sprite" parent="Ground" index="20"]
 
 position = Vector2( 2744.74, 1437.84 )
 rotation = -0.914143
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
-[node name="BackgroundCanyon3" type="Sprite" parent="Ground" index="22"]
+[node name="BackgroundCanyon3" type="Sprite" parent="Ground" index="21"]
 
 position = Vector2( 3480, 0 )
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
-[node name="BackgroundCanyon4" type="Sprite" parent="Ground" index="23"]
+[node name="BackgroundCanyon4" type="Sprite" parent="Ground" index="22"]
 
-position = Vector2( 2563.43, -1463.24 )
+position = Vector2( 2584.27, -1456.29 )
 rotation = 0.730628
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
-[node name="BackgroundCanyon5" type="Sprite" parent="Ground" index="24"]
+[node name="BackgroundCanyon5" type="Sprite" parent="Ground" index="23"]
 
 position = Vector2( 780, -2000 )
-texture = ExtResource( 9 )
-
-[node name="BackgroundCanyon6" type="Sprite" parent="Ground" index="25"]
-
-position = Vector2( -1090, -1990 )
-texture = ExtResource( 9 )
-
-[node name="BackgroundCanyon7" type="Sprite" parent="Ground" index="26"]
-
-position = Vector2( -2419.91, -1598.78 )
-rotation = -1.07353
-texture = ExtResource( 9 )
-
-[node name="BackgroundCanyon9" type="Sprite" parent="Ground" index="27"]
-
-position = Vector2( -3145.96, 41.0953 )
-rotation = -1.58155
-texture = ExtResource( 9 )
-
-[node name="BackgroundCanyon8" type="Sprite" parent="Ground" index="28"]
-
-position = Vector2( -2389.83, 1624.15 )
-rotation = -2.35111
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 
 

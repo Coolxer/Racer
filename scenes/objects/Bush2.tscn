@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/objects/Object.gd" type="Script" id=1]
-[ext_resource path="res://assets/bush1.png" type="Texture" id=2]
+[ext_resource path="res://assets/bush2.png" type="Texture" id=2]
 [ext_resource path="res://assets/bush.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 20.0
-height = 60.0
+radius = 10.0
+height = 22.0
 
-[node name="Bush1" type="StaticBody2D"]
+[node name="Bush2" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
