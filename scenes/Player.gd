@@ -32,5 +32,7 @@ func set_current_round(cround):
 func finish():
     finished = true
     
+    GUI_player_node.change_color(Color(120/255.0, 230/255.0, 68/255.0))
+    
 func is_finished():
     return finished

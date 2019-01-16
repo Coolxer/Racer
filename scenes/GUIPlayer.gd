@@ -11,3 +11,9 @@ func set_round(current, all):
 
 func set_checkpoint(current, all):
     $CheckpointText.text = str(current) + "/" + str(all)
+    
+func change_color(color):
+    $Position.add_color_override("font_color", color)
+    $Name.add_color_override("font_color", color)
+    $CheckpointText.add_color_override("font_color", color)
+    $RoundText.add_color_override("font_color", color)

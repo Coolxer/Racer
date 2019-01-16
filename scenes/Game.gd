@@ -103,12 +103,13 @@ func checkpoint_reached(player, checkpoint_index):
                 
                 current_round += 1
     
-                if(current_round > rounds):
+                if(current_round == rounds):
                     player.finish()
                 else:
                     current_checkpoint = 0
-                    player.set_current_round(current_round)
-                    player.GUI_player_node.set_round(current_round, rounds)
+                    
+                player.set_current_round(current_round)
+                player.GUI_player_node.set_round(current_round, rounds)
                 
             player.set_current_checkpoint(current_checkpoint)
             player.GUI_player_node.set_checkpoint(current_checkpoint, checkpoints)

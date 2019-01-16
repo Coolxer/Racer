@@ -25,7 +25,7 @@
 flags = 4
 load_path = "res://.import/track2_miniature_hovered.png-7fa9402777a2479ed2172376a4ddc0fc.stex"
 
-[node name="Configuration" type="VBoxContainer"]
+[node name="Configuration" type="VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
