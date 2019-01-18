@@ -3,6 +3,9 @@ extends HBoxContainer
 func update_position():
     $Position.text = str(get_index() + 1) + "."
 
+func get_nickname():
+    return $Name.text
+
 func set_nickname(nickname):
     $Name.text = nickname
     

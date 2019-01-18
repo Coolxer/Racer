@@ -57,6 +57,10 @@ func menu():
     load_scene(Manager.scenes["menu"])
 
 func configure():
+    track_scene = null
+    car_scenes = []
+    round_amount = 0
+    
     load_scene(Manager.scenes["configuration"])
     
 func game(track, players, rounds):

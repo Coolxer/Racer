@@ -6,10 +6,15 @@ var rounds = 1
 #How many checkpoints are on the selected track
 var checkpoints = 0
 
+var players_amount = 0
+var players_finished = 0
+
 var player_scene = preload("res://scenes/Player.tscn")
 
 var GUI_scene = preload("res://scenes/GUI.tscn")
 var GUI_player_scene = preload("res://scenes/GUIPlayer.tscn")
+
+var scoreboard_scene = preload("res://scenes/Scoreboard.tscn")
 
 #GUI node containing all players
 var GUI_players_node
@@ -17,6 +22,13 @@ var GUI_players_node
 var GUI_timer_node
 
 var track_node
+
+enum STATE {
+    PLAYING,
+    FINISHED    
+}
+
+var state = STATE.PLAYING
 
 func _ready():
     _setup_track()
@@ -27,6 +39,11 @@ func _ready():
     checkpoints = _get_checkpoints_count()
     
     _setup_gui()
+    
+func _input(event):
+    if state == STATE.FINISHED:
+        if event.is_action_pressed("ui_accept"):
+            Manager.configure()
     
 func _process(delta):
     GUI_timer_node.update()
@@ -86,6 +103,23 @@ func _setup_players():
         
         player_index += 1
         
+    players_amount = player_index
+    
+func _is_game_finished():
+    if players_amount == players_finished:
+        return true
+    return false
+    
+func _display_scoreboard():    
+    var scoreboard_node = scoreboard_scene.instance()
+    
+    for player in GUI_players_node.get_children():
+        scoreboard_node.add_player(player.get_index() + 1, player.get_nickname())
+        
+    $CanvasLayer.remove_child(GUI_players_node)
+    $CanvasLayer.add_child(scoreboard_node)
+        
+        
 func checkpoint_reached(player, checkpoint_index):    
     if(!player.is_finished()):
         var current_checkpoint = player.get_current_checkpoint()
@@ -104,7 +138,13 @@ func checkpoint_reached(player, checkpoint_index):
                 current_round += 1
     
                 if(current_round == rounds):
+                    players_finished += 1
                     player.finish()
+                    
+                    if _is_game_finished():
+                        state = STATE.FINISHED
+                        _display_scoreboard()
+                    
                 else:
                     current_checkpoint = 0
                     
